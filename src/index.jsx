@@ -7,7 +7,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <div className='yellow-border' />
+    <div className='top-border' />
     <App />
   </React.StrictMode>
 );
