@@ -47,7 +47,7 @@ li {
   background-size: 300%;
   height: 1rem;
   width: 100%;
-  animation: bg-animation 15s infinite;
+  animation: bg-animation 10s infinite;
 }
 
 @keyframes bg-animation {
