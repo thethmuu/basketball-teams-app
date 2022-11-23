@@ -1,9 +1,10 @@
-@import url("https://use.typekit.net/wrw1rqc.css");
+@import url('https://use.typekit.net/wrw1rqc.css');
 
 :root {
   --black: #000;
   --white: #fff;
   --yellow: #f4f73e;
+  --rose: #ee6352;
 }
 
 *,
@@ -13,7 +14,8 @@
 }
 
 html {
-  font-family: proxima-nova, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+  font-family: proxima-nova, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -30,20 +32,39 @@ body {
 }
 
 a {
-  color: var(--yellow);
+  color: var(--rose);
   text-decoration: none;
+}
+
+.active {
+  font-weight: 700;
+  color: var(--white);
 }
 
 li {
   list-style-type: none;
 }
 
-.yellow-border {
+.top-border {
   padding: 0;
   margin: 0;
-  background: var(--yellow);
-  height: 5px;
+  background: linear-gradient(90deg, #ee6352, purple, #ee6352);
+  background-size: 300%;
+  height: 1rem;
   width: 100%;
+  animation: bg-animation 10s infinite;
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
 }
 
 .container {
@@ -201,7 +222,7 @@ li {
   border: 2px solid var(--black);
   color: var(--black);
   text-align: center;
-  background: var(--yellow);
+  background: var(--rose);
   font-weight: 900;
   font-size: 15px;
 }
