@@ -7,6 +7,7 @@ import {
   useSearchParams,
 } from 'react-router-dom';
 import usePlayerNames from '../hooks/usePlayerNames';
+import Loading from './Loading';
 import Sidebar from './Sidebar';
 
 const Players = () => {
@@ -16,9 +17,7 @@ const Players = () => {
 
   const { response: names, loading } = usePlayerNames();
 
-  const team = searchParams.get('teamId');
-
-  if (loading === true) return null;
+  if (loading === true) return <Loading />;
 
   return (
     <div className='container two-column'>

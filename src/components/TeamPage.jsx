@@ -5,6 +5,7 @@ import useTeamNames from '../hooks/useTeamNames';
 import useTeam from '../hooks/useTeam';
 import useTeamsArticles from '../hooks/useTeamsArticles';
 import { slugify } from '../utils';
+import Loading from './Loading';
 
 function useTeamPageData(teamId) {
   const { response: teamNames, loading: loadingTeamNames } = useTeamNames();
@@ -25,9 +26,7 @@ const TeamPage = () => {
   const { teamNames, articles, team, loading } = useTeamPageData(teamId);
   console.warn(team);
 
-  if (loading === true) {
-    return <p>Loading...</p>;
-  }
+  if (loading === true) return <Loading />;
 
   if (!teamNames.includes(teamId)) {
     return <p className='text-center'>Team: {teamId} does not exist!</p>;
@@ -78,7 +77,9 @@ const TeamPage = () => {
           return (
             <li key={article.id}>
               <h4 className='article-title'>
-                <Link to={`/articles/${slugify(article.title)}`}>
+                <Link
+                  to={`/${slugify(teamId)}/articles/${slugify(article.title)}`}
+                >
                   {article.title}
                 </Link>
               </h4>

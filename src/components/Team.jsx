@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useTeam from '../hooks/useTeam';
+import Loading from './Loading';
 import TeamLogo from './TeamLogo';
 
 const Team = () => {
@@ -8,7 +9,7 @@ const Team = () => {
   const { response: team, loading } = useTeam(teamId);
   console.log(team);
 
-  if (loading === true) return null;
+  if (loading === true) return <Loading />;
 
   return (
     <div className='panel'>
