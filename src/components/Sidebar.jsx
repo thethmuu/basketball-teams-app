@@ -7,9 +7,9 @@ export default function Sidebar({ title, list }) {
     <div>
       <h3 className='header'>{title}</h3>
       <ul className='sidebar-list'>
-        {list.map((player) => (
-          <CustomLink key={player} to={slugify(player)}>
-            {player.toUpperCase()}
+        {list.map((item) => (
+          <CustomLink key={item} to={slugify(item)}>
+            {item.toUpperCase()}
           </CustomLink>
         ))}
       </ul>
@@ -19,8 +19,9 @@ export default function Sidebar({ title, list }) {
 
 function CustomLink({ to, children }) {
   const location = useLocation();
-
-  const isMatch = location.pathname.split('/')[2] === to;
+  const splitedPath = location.pathname.split('/');
+  // getting last array item
+  const isMatch = splitedPath[splitedPath.length - 1] === to;
 
   return (
     <div>

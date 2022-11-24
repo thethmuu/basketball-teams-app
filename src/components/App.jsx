@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Article from './Article';
+import Articles from './Articles';
 import Home from './Home';
 import Navbar from './Navbar';
 import Player from './Player';
@@ -25,6 +27,9 @@ const App = () => {
               <Route path=':teamId' element={<Team />} />
             </Route>
             <Route path='/:teamId' element={<TeamPage />} />
+            <Route path='/:teamId/articles' element={<Articles />}>
+              <Route path=':articleId' element={<Article />} />
+            </Route>
           </Routes>
         </div>
       </Router>
