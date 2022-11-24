@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Navigate } from 'react-router-dom';
 import useTeam from '../hooks/useTeam';
 import Loading from './Loading';
 import TeamLogo from './TeamLogo';
@@ -9,10 +9,13 @@ const Team = () => {
   const { response: team, loading } = useTeam(teamId);
   console.log(team);
 
-  if (loading === true) return <Loading />;
-
-  return (
-    <div className='panel'>
+  let body;
+  if (loading === true) {
+    body = <Loading />;
+  } else if (team === null) {
+    body = <Navigate to={`/teams`} />;
+  } else {
+    body = (
       <div style={{ width: '100%' }}>
         <TeamLogo id={team.id} className='center' />
         <h1 className='medium-header'>{team.name}</h1>
@@ -31,8 +34,10 @@ const Team = () => {
           {team.name} Team Page
         </Link>
       </div>
-    </div>
-  );
+    );
+  }
+
+  return <div className='panel'>{body}</div>;
 };
 
 export default Team;
